@@ -11,7 +11,7 @@ class HeaderContainer extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.4,
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.red, Colors.blue],
+              colors: [Colors.green, Colors.amber[900]],
               end: Alignment.bottomCenter,
               begin: Alignment.topCenter),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100))),
@@ -33,12 +33,12 @@ class HeaderContainer extends StatelessWidget {
                   decoration: BoxDecoration(
                       border: Border.all(
                         width: 4,
-                        color: Colors.deepPurple[900],
+                        color: Colors.green[900],
                       ),
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage("images/p1.jpg"))),
+                          image: AssetImage("images/t5.png"))),
                 ),
               ],
             ),

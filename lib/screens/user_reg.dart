@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:truck_sharing_app/widgets/herder_container.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:truck_sharing_app/screens/regSuccess.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class UserRegScreen extends StatefulWidget {
   @override
@@ -10,19 +14,53 @@ class UserRegScreen extends StatefulWidget {
 class _UserRegScreenState extends State<UserRegScreen> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-  // final _firestore = FirebaseFirestore.instance;
-  // final _auth = FirebaseAuth.instance;
-  // User loggedInUser;
+  User user = FirebaseAuth.instance.currentUser;
+
+  final _firestore = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+  User loggedInUser;
   String designation;
+  String registerAs;
   String username;
   String email;
   String phone;
   String password;
+  String TruckDriver;
+  String TruckOwner;
+  String Sender;
+  String Admin;
   bool isLoading = false;
 
   final formKey = new GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  getCurrentUser() async {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+
+        //print(loggedInUser.uid);
+        //print(loggedInUser.email);
+      }
+    } catch (e) {
+      print('Fail');
+    }
+  }
+
+  Future usernameCheck(String username) async {
+    final result = await FirebaseFirestore.instance
+        .collection('$designation')
+        .where('User Name', isEqualTo: username)
+        .get();
+    return result.docs.isEmpty;
+  }
+
   _saveForm() {
     var form = formKey.currentState;
     if (form.validate()) {
@@ -113,6 +151,22 @@ class _UserRegScreenState extends State<UserRegScreen> {
                         margin: EdgeInsets.only(left: 20, right: 20, top: 20),
                         color: Colors.white,
                         child: TextFormField(
+                          validator: (String value) {
+                            if (value.isNotEmpty) {
+                              if (value.length != 11) {
+                                return "Enter Valid Number";
+                              }
+                              if (!RegExp('^[0-9]{11}').hasMatch(value)) {
+                                return "Please enter 11 digit";
+                              }
+                            }
+
+                            return null;
+                          },
+                          onChanged: (value) {
+                            phone = value;
+                            //Do something with the user input.
+                          },
                           decoration: InputDecoration(
                             icon: Icon(Icons.phone_android),
                             hintText: 'Enter your mobile No',
@@ -145,24 +199,30 @@ class _UserRegScreenState extends State<UserRegScreen> {
                                       return null;
                                     },
                                     hint: Text('Register As'),
-                                    onChanged: (val) {},
+                                    onChanged: (val) {
+                                      registerAs = val;
+                                      print(val);
+                                      setState(() {
+                                        this.designation = val;
+                                      });
+                                    },
                                     value: this.designation,
                                     items: [
                                       DropdownMenuItem(
                                         child: Text('Truck Driver'),
-                                        value: 'Truck Driver',
+                                        value: 'TruckDriver',
                                       ),
                                       DropdownMenuItem(
                                         child: Text('Truck Owner'),
-                                        value: 'Truck Owner',
+                                        value: 'TruckOwner',
                                       ),
                                       DropdownMenuItem(
                                         child: Text('Sender'),
                                         value: 'Sender',
                                       ),
                                       DropdownMenuItem(
-                                        child: Text('Receiver'),
-                                        value: 'Receiver',
+                                        child: Text('Admin'),
+                                        value: 'Admin',
                                       ),
                                     ],
                                   ),
@@ -236,8 +296,108 @@ class _UserRegScreenState extends State<UserRegScreen> {
                               child: FlatButton(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 12, horizontal: 50),
-                                color: Colors.blue.withOpacity(0.9),
-                                onPressed: () {},
+                                color: Colors.amber[700],
+                                onPressed: () async {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  final valid = await usernameCheck(username);
+                                  if (!valid) {
+                                    return showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                              title: Center(
+                                                  child: Text(
+                                                'User Name already taken',
+                                                style: TextStyle(
+                                                    color: Colors.blue[900]),
+                                              )),
+                                              actions: <Widget>[
+                                                FlatButton(
+                                                    onPressed: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) {
+                                                            return UserRegScreen();
+                                                          },
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Text(
+                                                        'Try Another Name'))
+                                              ]);
+                                        });
+                                    // username exists
+                                  }
+                                  if (_formkey.currentState.validate()) {
+                                    try {
+                                      var newUser = await _auth
+                                          .createUserWithEmailAndPassword(
+                                              email: email, password: password)
+                                          .then((newUser) {
+                                        _firestore
+                                            .collection('$designation')
+                                            .doc(newUser.user.uid)
+                                            .set({
+                                          'Email': email,
+                                          'Register As': registerAs,
+                                          'User Name': username,
+                                          'phone': phone,
+                                        });
+                                      });
+                                      if (newUser != null) {
+                                        print('I am here');
+                                      }
+                                      // int count = 0;
+                                      // Navigator.popUntil(context, (route) {
+                                      //   return count++ == 2;
+                                      // });
+
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return RegSuccessScreen();
+                                          },
+                                        ),
+                                      );
+
+                                      setState(() {
+                                        isLoading = false;
+                                      });
+                                    } catch (e) {
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      String errorMessage = "${e.toString()}";
+                                      return showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              title: Center(
+                                                  child: Text(
+                                                      '${errorMessage.split('] ')[1]}')),
+                                              actions: [
+                                                FlatButton(
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        isLoading = false;
+                                                      });
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Text('Try Again'))
+                                              ],
+                                            );
+                                          });
+                                    }
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                  }
+                                },
                                 child: Text(
                                   "Register",
                                   style: TextStyle(

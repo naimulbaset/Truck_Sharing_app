@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:truck_sharing_app/screens/driverDrawer.dart';
+import 'package:truck_sharing_app/screens/myTrucks.dart';
+import 'package:truck_sharing_app/screens/truckReg.dart';
+import 'package:truck_sharing_app/screens/senderAtpickup.dart';
+import 'package:truck_sharing_app/screens/senderDrawer.dart';
 
-class TDatDeliveyScreen extends StatefulWidget {
+class TripDetailScreen extends StatefulWidget {
   @override
-  _TDatDeliveyScreenState createState() => _TDatDeliveyScreenState();
+  _TripDetailScreenState createState() => _TripDetailScreenState();
 }
 
-class _TDatDeliveyScreenState extends State<TDatDeliveyScreen> {
+class _TripDetailScreenState extends State<TripDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.blue,
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
-        title: Text('Driver at Delivery Point',
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Source Sans Pro',
-              fontWeight: FontWeight.bold,
-            )),
+        title: Text('Trip details'),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      drawer: DriverDrawer(),
+      drawer: SenderDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -35,8 +38,8 @@ class _TDatDeliveyScreenState extends State<TDatDeliveyScreen> {
                 padding: EdgeInsets.fromLTRB(30, 30, 0, 30),
                 //height: double.infinity,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  color: (Colors.amber.withOpacity(0.3)),
+                  border: Border.all(color: Colors.amber[900]),
+                  color: (Colors.green.withOpacity(0.3)),
                 ),
 
                 child: Column(
@@ -69,6 +72,26 @@ class _TDatDeliveyScreenState extends State<TDatDeliveyScreen> {
                                 label: Text('10/08/2021'),
                               ),
                             ], rows: <DataRow>[
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text(
+                                    'Driver Name:',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                                  DataCell(Text('Mr Xyz')),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text(
+                                    'Driver Number',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                                  DataCell(Text('0175954900')),
+                                ],
+                              ),
                               DataRow(
                                 cells: <DataCell>[
                                   DataCell(Text(
@@ -159,14 +182,52 @@ class _TDatDeliveyScreenState extends State<TDatDeliveyScreen> {
                       //margin: EdgeInsets.fromLTRB(20, 550, 20, 60),
                       child: Column(
                         children: [
-                          Center(
+                          Container(
+                            margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
                             child: FlatButton(
                               padding: EdgeInsets.symmetric(
-                                  vertical: 12, horizontal: 50),
-                              color: Colors.amber.withOpacity(0.9),
+                                  vertical: 12, horizontal: 70),
+                              color: Colors.green.withOpacity(0.9),
                               onPressed: () {},
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.call,
+                                    color: Colors.white,
+                                  ),
+                                  Text(
+                                    "Call Driver",
+                                    style: TextStyle(
+                                        fontFamily: 'Source Sans Pro',
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                            child: FlatButton(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 12, horizontal: 70),
+                              color: Colors.green.withOpacity(0.9),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return SenderAtPickupScreen();
+                                    },
+                                  ),
+                                );
+                              },
                               child: Text(
-                                "Send OTP to receiver",
+                                "Pickup Point",
                                 style: TextStyle(
                                     fontFamily: 'Source Sans Pro',
                                     fontSize: 16,
@@ -181,68 +242,6 @@ class _TDatDeliveyScreenState extends State<TDatDeliveyScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(30, 30, 0, 30),
-                  //height: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    color: (Colors.greenAccent.withOpacity(0.3)),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                                margin: const EdgeInsets.only(left: 50.0),
-                                child: Text(
-                                  'Input OTP:',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17),
-                                )),
-                          ),
-                          Expanded(
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 30.0),
-                              color: Colors.grey.withOpacity(0.6),
-                              child: TextFormField(),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Container(
-                        //margin: EdgeInsets.fromLTRB(20, 550, 20, 60),
-                        child: Column(
-                          children: [
-                            Center(
-                              child: FlatButton(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 12, horizontal: 50),
-                                color: Colors.green.withOpacity(0.9),
-                                onPressed: () {},
-                                child: Text(
-                                  "confirm",
-                                  style: TextStyle(
-                                      fontFamily: 'Source Sans Pro',
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
             ],
           ),
         ),

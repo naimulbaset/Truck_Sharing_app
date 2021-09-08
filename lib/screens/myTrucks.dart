@@ -14,7 +14,7 @@ class _MtScreenState extends State<MtScreen> {
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.amber[700],
         title: Text('My Truck Screen',
             style: TextStyle(
               color: Colors.white,
@@ -38,7 +38,7 @@ class _MtScreenState extends State<MtScreen> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     letterSpacing: 0,
                     // backgroundColor: Colors.indigoAccent
                   ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:truck_sharing_app/screens/login.dart';
 import 'package:truck_sharing_app/screens/user_reg.dart';
 import 'package:truck_sharing_app/widgets/herder_container.dart';
+import 'package:truck_sharing_app/screens/pdf.dart';
 
 //import 'package:manufacturing_app/screens/guestHome.dart';
 
@@ -37,7 +38,7 @@ class _StartScreenState extends State<StartScreen> {
                             fontFamily: 'Source Sans Pro',
                             fontSize: 30,
                             letterSpacing: 2,
-                            color: Colors.blue[900],
+                            color: Colors.green[900],
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -53,7 +54,7 @@ class _StartScreenState extends State<StartScreen> {
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 30,
-                            color: Colors.blue[700],
+                            color: Colors.green[700],
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -75,7 +76,7 @@ class _StartScreenState extends State<StartScreen> {
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 20,
-                            color: Colors.blue[700],
+                            color: Colors.green[700],
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -97,10 +98,32 @@ class _StartScreenState extends State<StartScreen> {
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 20,
-                            color: Colors.blue[700],
+                            color: Colors.green[700],
                             fontWeight: FontWeight.bold),
                       ),
                     ),
+                    // FlatButton(
+                    //   padding:
+                    //       EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    //   onPressed: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) {
+                    //           return PdfPage();
+                    //         },
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: Text(
+                    //     "pdf",
+                    //     style: TextStyle(
+                    //         fontFamily: 'Source Sans Pro',
+                    //         fontSize: 20,
+                    //         color: Colors.blue[700],
+                    //         fontWeight: FontWeight.bold),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

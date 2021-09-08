@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:truck_sharing_app/screens/senderAtpickup.dart';
 import 'package:truck_sharing_app/screens/login.dart';
 import 'package:truck_sharing_app/screens/productSender.dart';
+import 'package:truck_sharing_app/screens/welcomeSender.dart';
 
 class SenderDrawer extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _SenderDrawerState extends State<SenderDrawer> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return ProductSenderScreen();
+                      return WcSenderScreen();
                     },
                   ),
                 );
@@ -33,7 +34,7 @@ class _SenderDrawerState extends State<SenderDrawer> {
                 'Home',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -55,7 +56,7 @@ class _SenderDrawerState extends State<SenderDrawer> {
                 'Profile',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -77,7 +78,7 @@ class _SenderDrawerState extends State<SenderDrawer> {
                 'PickUp Point',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -95,7 +96,7 @@ class _SenderDrawerState extends State<SenderDrawer> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     elevation: 10,
-                    color: Colors.blue[900],
+                    color: Colors.amber[700],
                     splashColor: Colors.white,
                     child: Text(
                       'Sign Out',

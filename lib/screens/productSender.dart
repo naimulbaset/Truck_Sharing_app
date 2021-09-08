@@ -61,7 +61,7 @@ class _ProductSenderScreenState extends State<ProductSenderScreen> {
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.amber[700],
         title: Text('Product Sender',
             style: TextStyle(
               color: Colors.white,
@@ -327,7 +327,7 @@ class _ProductSenderScreenState extends State<ProductSenderScreen> {
                       child: FlatButton(
                         padding:
                             EdgeInsets.symmetric(vertical: 15, horizontal: 50),
-                        color: Colors.blue[700],
+                        color: Colors.amber[700],
                         onPressed: () async {
                           Navigator.push(
                             context,

@@ -13,7 +13,7 @@ class _SenderAtPickupScreenState extends State<SenderAtPickupScreen> {
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.amber[700],
         title: Text('Sender at pickup Point',
             style: TextStyle(
               color: Colors.white,
@@ -36,7 +36,7 @@ class _SenderAtPickupScreenState extends State<SenderAtPickupScreen> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue[900],
+                  color: Colors.green[900],
                   letterSpacing: 0,
                   // backgroundColor: Colors.indigoAccent
                 ),
@@ -49,148 +49,101 @@ class _SenderAtPickupScreenState extends State<SenderAtPickupScreen> {
                 padding: EdgeInsets.fromLTRB(30, 30, 0, 30),
                 //height: double.infinity,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    color: (Colors.blue.withOpacity(0.3)),
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(40.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(0.0),
-                        bottomLeft: Radius.circular(40.0))),
-
+                  border: Border.all(color: Colors.amber[900]),
+                  color: (Colors.green.withOpacity(0.3)),
+                ),
                 child: Column(
-                  children: [
-                    Text(
-                      'Product Details',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue[900],
-                        letterSpacing: 0,
-                        // backgroundColor: Colors.indigoAccent
-                      ),
-                    ),
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: DataTable(columns: <DataColumn>[
+                          DataColumn(
+                            label: Text(
+                              'Expected Delivery Date',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text('10/08/2021'),
+                          ),
+                        ], rows: <DataRow>[
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Expected time',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('1 PM')),
+                            ],
+                          ),
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Receiver Name',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('Mr X')),
+                            ],
+                          ),
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Receiver Phone No',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('0175908908')),
+                            ],
+                          ),
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Pickup Point',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('Lusaka')),
+                            ],
+                          ),
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Delivery Point',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('Kitwe')),
+                            ],
+                          ),
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Product Weight',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('10 kg')),
+                            ],
+                          ),
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Product Volume',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('700 m^3')),
+                            ],
+                          ),
+                          DataRow(
+                            cells: <DataCell>[
+                              DataCell(Text(
+                                'Product Type',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              DataCell(Text('Fragile')),
+                            ],
+                          ),
+                        ])),
                     SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Pickup point:',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Dhaka',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Delivery time:',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Chittagong',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            'Pickup Date:',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Flexible(
-                            //fit: FlexFit.tight,
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Text(
-                                '08/17/2021',
-                                //softWrap: false,
-                                //overflow: TextOverflow.fade,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Product Type:',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Fragile',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Product Weight:',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Flexible(
-                          //fit: FlexFit.tight,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Text(
-                              '10 kg',
-                              //softWrap: false,
-                              //overflow: TextOverflow.fade,
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Product Volume:',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Flexible(
-                          //fit: FlexFit.tight,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Text(
-                              '10 box',
-                              //softWrap: false,
-                              //overflow: TextOverflow.fade,
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Container(
                       //margin: EdgeInsets.fromLTRB(20, 550, 20, 60),
@@ -200,10 +153,10 @@ class _SenderAtPickupScreenState extends State<SenderAtPickupScreen> {
                             child: FlatButton(
                               padding: EdgeInsets.symmetric(
                                   vertical: 12, horizontal: 50),
-                              color: Colors.blue.withOpacity(0.9),
+                              color: Colors.amber[700],
                               onPressed: () {},
                               child: Text(
-                                "Send OTP to driver",
+                                "Send OTO to Driver",
                                 style: TextStyle(
                                     fontFamily: 'Source Sans Pro',
                                     fontSize: 16,
@@ -219,20 +172,16 @@ class _SenderAtPickupScreenState extends State<SenderAtPickupScreen> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 20,
               ),
               Container(
                   margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
                   padding: EdgeInsets.fromLTRB(30, 30, 0, 30),
                   //height: double.infinity,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
-                      color: (Colors.greenAccent.withOpacity(0.3)),
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(40.0),
-                          bottomRight: Radius.circular(0.0),
-                          topLeft: Radius.circular(0.0),
-                          bottomLeft: Radius.circular(40.0))),
+                    border: Border.all(color: Colors.black),
+                    color: (Colors.amber.withOpacity(0.3)),
+                  ),
                   child: Column(
                     children: [
                       Row(

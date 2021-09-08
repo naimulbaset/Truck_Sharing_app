@@ -21,8 +21,8 @@ class _PendingScreenState extends State<PendingScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
-        title: Text(''),
+        backgroundColor: Colors.amber[700],
+        title: Text('Request Status'),
       ),
       drawer: SenderDrawer(),
       body: SafeArea(
@@ -40,8 +40,8 @@ class _PendingScreenState extends State<PendingScreen> {
                         padding: EdgeInsets.fromLTRB(80, 150, 0, 30),
                         //height: double.infinity,
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            color: (Colors.blue.withOpacity(0.3)),
+                            border: Border.all(color: Colors.amber[900]),
+                            color: (Colors.green.withOpacity(0.3)),
                             borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(0.0),
                                 bottomRight: Radius.circular(0.0),
@@ -70,16 +70,16 @@ class _PendingScreenState extends State<PendingScreen> {
                     FlatButton(
                       padding:
                           EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-                      color: Colors.blue[700],
+                      color: Colors.amber[700],
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return MtScreen();
-                            },
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return MtScreen();
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Text(
                         "Cancel Request",
@@ -96,7 +96,7 @@ class _PendingScreenState extends State<PendingScreen> {
                     FlatButton(
                       padding:
                           EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-                      color: Colors.blue[700],
+                      color: Colors.amber[700],
                       onPressed: () {
                         Navigator.push(
                           context,

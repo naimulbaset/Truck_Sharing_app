@@ -61,7 +61,7 @@ class _TruckRegScreenState extends State<TruckRegScreen> {
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.amber[700],
         title: Text('Add your Truck',
             style: TextStyle(
               color: Colors.white,
@@ -87,7 +87,7 @@ class _TruckRegScreenState extends State<TruckRegScreen> {
                       style: TextStyle(
                           fontFamily: 'Source Sans Pro',
                           fontSize: 20,
-                          color: Colors.black,
+                          color: Colors.green[900],
                           fontWeight: FontWeight.bold)),
                 ),
                 SizedBox(
@@ -258,7 +258,7 @@ class _TruckRegScreenState extends State<TruckRegScreen> {
                       child: FlatButton(
                         padding:
                             EdgeInsets.symmetric(vertical: 15, horizontal: 50),
-                        color: Colors.blue[700],
+                        color: Colors.amber[700],
                         onPressed: () {
                           Navigator.push(
                             context,

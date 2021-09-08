@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:truck_sharing_app/screens/driverDrawer.dart';
+import 'package:truck_sharing_app/screens/ThankOwner.dart';
 
 class RequestScreen extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _RequestScreenState extends State<RequestScreen> {
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.amber[700],
         title: Text('Request',
             style: TextStyle(
               color: Colors.white,
@@ -37,7 +38,7 @@ class _RequestScreenState extends State<RequestScreen> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     letterSpacing: 0,
                     // backgroundColor: Colors.indigoAccent
                   ),
@@ -70,7 +71,7 @@ class _RequestScreenState extends State<RequestScreen> {
                             'Pickup Point',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           )),
-                          DataCell(Text('Bashundhara R/A')),
+                          DataCell(Text('Lusaka')),
                         ],
                       ),
                       DataRow(
@@ -79,7 +80,7 @@ class _RequestScreenState extends State<RequestScreen> {
                             'Delivery point',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           )),
-                          DataCell(Text('Mirpur 10')),
+                          DataCell(Text('Kitwe')),
                         ],
                       ),
                       DataRow(
@@ -121,76 +122,9 @@ class _RequestScreenState extends State<RequestScreen> {
                     ])),
               ],
             ),
-            // Card(
-            //   margin: const EdgeInsets.all(16.0),
-            //   //clipBehavior: Clip.antiAlias,
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(16.0),
-            //     child: Column(
-            //       children: [
-            //         ListTile(
-            //           leading: Icon(Icons.arrow_drop_down_circle),
-            //           title: const Text(
-            //             'Space Request 1',
-            //             style: TextStyle(
-            //                 fontWeight: FontWeight.bold, fontSize: 20),
-            //           ),
-            //         ),
-            //         Text(
-            //           'Pickup Date:10/08/21',
-            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //         ),
-            //         Text(
-            //           'Pickup Point: Bashundhara R/A',
-            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //         ),
-            //         Text(
-            //           'Delivery Point: Mirpur 10',
-            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //         ),
-            //         Text(
-            //           'Delivery Time: 1.00 pm',
-            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //         ),
-            //         Text(
-            //           'Product Weight: 10 kg',
-            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //         ),
-            //         Text(
-            //           'Product Volume: Mirpur 10',
-            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //         ),
-            //         Text(
-            //           'Product type: Fragile',
-            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            //         ),
-            //         // ButtonBar(
-            //         //   alignment: MainAxisAlignment.start,
-            //         //   children: [
-            //         //     FlatButton(
-            //         //       textColor: const Color(0xFF6200EE),
-            //         //       onPressed: () {
-            //         //         // Perform some action
-            //         //       },
-            //         //       child: const Text('ACTION 1'),
-            //         //     ),
-            //         //     FlatButton(
-            //         //       textColor: const Color(0xFF6200EE),
-            //         //       onPressed: () {
-            //         //         // Perform some action
-            //         //       },
-            //         //       child: const Text('ACTION 2'),
-            //         //     ),
-            //         //   ],
-            //         // ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
             SizedBox(
               height: 25,
             ),
-
             Card(
                 margin: const EdgeInsets.all(16.0),
                 //clipBehavior: Clip.antiAlias,
@@ -204,7 +138,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blue[900],
+                          color: Colors.green[900],
                           letterSpacing: 0,
 
                           // backgroundColor: Colors.indigoAccent
@@ -293,8 +227,17 @@ class _RequestScreenState extends State<RequestScreen> {
                               child: FlatButton(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 18, horizontal: 50),
-                                color: Colors.blue.withOpacity(0.9),
-                                onPressed: () {},
+                                color: Colors.amber[700],
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return OwnerThankScreen();
+                                      },
+                                    ),
+                                  );
+                                },
                                 child: Text(
                                   "Agree",
                                   style: TextStyle(

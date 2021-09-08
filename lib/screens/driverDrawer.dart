@@ -35,7 +35,7 @@ class _DriverDrawerState extends State<DriverDrawer> {
                 'Home',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -57,7 +57,7 @@ class _DriverDrawerState extends State<DriverDrawer> {
                 'Profile',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -79,7 +79,7 @@ class _DriverDrawerState extends State<DriverDrawer> {
                 'Dashboard',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -101,34 +101,12 @@ class _DriverDrawerState extends State<DriverDrawer> {
                 'My Trucks',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.blue[900],
+                    color: Colors.green[900],
                     fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
               height: 10,
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return TDatDeliveyScreen();
-                    },
-                  ),
-                );
-              },
-              title: Text(
-                'Delivery Point',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue[900],
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            SizedBox(
-              height: 50,
             ),
             Container(
               alignment: Alignment.center,
@@ -141,7 +119,7 @@ class _DriverDrawerState extends State<DriverDrawer> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     elevation: 10,
-                    color: Colors.blue[900],
+                    color: Colors.amber[700],
                     splashColor: Colors.white,
                     child: Text(
                       'Sign Out',

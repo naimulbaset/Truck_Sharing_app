@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:truck_sharing_app/screens/driverDrawer.dart';
 import 'package:truck_sharing_app/screens/myTrucks.dart';
 import 'package:truck_sharing_app/screens/truckReg.dart';
+import 'package:truck_sharing_app/screens/requestStatus.dart';
+import 'package:truck_sharing_app/screens/driverDrawer.dart';
+import 'package:truck_sharing_app/screens/PaymentStatusOwnerEnd.dart';
 
-class SuccessScreen extends StatefulWidget {
+class OwnerThankScreen extends StatefulWidget {
   @override
-  _SuccessScreenState createState() => _SuccessScreenState();
+  _OwnerThankScreenState createState() => _OwnerThankScreenState();
 }
 
-class _SuccessScreenState extends State<SuccessScreen> {
+class _OwnerThankScreenState extends State<OwnerThankScreen> {
   @override
   void initState() {
     super.initState();
@@ -35,7 +38,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                     Expanded(
                       child: Container(
                         margin: EdgeInsets.fromLTRB(20, 60, 20, 0),
-                        padding: EdgeInsets.fromLTRB(80, 150, 0, 30),
+                        padding: EdgeInsets.fromLTRB(50, 100, 30, 0),
                         //height: double.infinity,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black),
@@ -49,7 +52,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
                         child: Column(
                           children: [
                             Text(
-                              'Truck successfully Registered!',
+                              'Thank You for accepting!\n'
+                              'The Sender is notfied!',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Source Sans Pro',
@@ -69,17 +73,17 @@ class _SuccessScreenState extends State<SuccessScreen> {
                           EdgeInsets.symmetric(vertical: 20, horizontal: 60),
                       color: Colors.amber[700],
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return MtScreen();
-                            },
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return MtScreen();
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Text(
-                        "My Trucks",
+                        "Cancel",
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 15,
@@ -99,13 +103,13 @@ class _SuccessScreenState extends State<SuccessScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return TruckRegScreen();
+                              return PaymentStatusScreen();
                             },
                           ),
                         );
                       },
                       child: Text(
-                        "Add New Truck",
+                        "Payment Status",
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 15,

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "675615174697",
+    "project_id": "trucksharingapp",
+    "storage_bucket": "trucksharingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675615174697:android:a4024c689c23addcb4ec38",
+        "android_client_info": {
+          "package_name": "com.example.truck_sharing_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675615174697-1p5j4j9du9iegrmle9qrlj7gf42th07l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClxk56RR07ZF2vLgb2zBofm55-bm_4Xwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675615174697-1p5j4j9du9iegrmle9qrlj7gf42th07l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

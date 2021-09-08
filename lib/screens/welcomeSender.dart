@@ -4,21 +4,23 @@ import 'package:truck_sharing_app/screens/driverDrawer.dart';
 import 'package:truck_sharing_app/screens/truckReg.dart';
 import 'package:truck_sharing_app/screens/DriverScreen/AssignedTrips.dart';
 import 'package:truck_sharing_app/screens/truckDriverAtDeliverypoint.dart';
+import 'package:truck_sharing_app/screens/productSender.dart';
+import 'package:truck_sharing_app/screens/senderDrawer.dart';
 
-class DriverHomeScreen extends StatefulWidget {
+class WcSenderScreen extends StatefulWidget {
   @override
-  _DriverHomeScreenState createState() => _DriverHomeScreenState();
+  _WcSenderScreenState createState() => _WcSenderScreenState();
 }
 
-class _DriverHomeScreenState extends State<DriverHomeScreen> {
+class _WcSenderScreenState extends State<WcSenderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.amber[900],
-        title: Text('Truck Driver',
+        backgroundColor: Colors.amber[700],
+        title: Text('Welcome Sender',
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Source Sans Pro',
@@ -26,7 +28,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
             )),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      drawer: DriverDrawer(),
+      drawer: SenderDrawer(),
       body: SafeArea(
         child: ListView(
           children: [
@@ -40,13 +42,13 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                       child: Stack(
                         children: [
                           Container(
-                            width: 130,
-                            height: 130,
+                            width: 150,
+                            height: 150,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    image: AssetImage("images/d2.png"))),
+                                    image: AssetImage("images/s1.png"))),
                           ),
                         ],
                       ),
@@ -71,7 +73,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return AssignedTripScreen();
+                              return ProductSenderScreen();
                             },
                           ),
                         );
@@ -93,21 +95,21 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                         ),
                         child: Center(
                             child: Text(
-                          "Assigned trips",
+                          "Send Parcel",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         )),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return AssignedTripScreen();
-                            },
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return AssignedTripScreen();
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -126,7 +128,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                         ),
                         child: Center(
                             child: Text(
-                          "Delivery Point",
+                          "Trip History",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         )),
                       ),

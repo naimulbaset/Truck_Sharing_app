@@ -14,7 +14,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.amber[700],
         title: Text('Dashboard',
             style: TextStyle(
               color: Colors.white,
@@ -44,7 +44,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Colors.blue.withOpacity(0.9), Colors.red],
+                      colors: [Colors.amber[900], Colors.green],
                     ),
                     borderRadius: BorderRadius.circular(50)),
                 width: MediaQuery.of(context).size.width,
@@ -77,7 +77,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Colors.blue.withOpacity(0.9), Colors.red],
+                      colors: [Colors.amber[900], Colors.green],
                     ),
                     borderRadius: BorderRadius.circular(50)),
                 width: MediaQuery.of(context).size.width,
@@ -110,7 +110,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Colors.blue.withOpacity(0.9), Colors.red],
+                      colors: [Colors.amber[900], Colors.green],
                     ),
                     borderRadius: BorderRadius.circular(50)),
                 width: MediaQuery.of(context).size.width,

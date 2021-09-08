@@ -5,20 +5,20 @@ import 'package:truck_sharing_app/screens/truckReg.dart';
 import 'package:truck_sharing_app/screens/DriverScreen/AssignedTrips.dart';
 import 'package:truck_sharing_app/screens/truckDriverAtDeliverypoint.dart';
 
-class DriverHomeScreen extends StatefulWidget {
+class AdminScreen extends StatefulWidget {
   @override
-  _DriverHomeScreenState createState() => _DriverHomeScreenState();
+  _AdminScreenState createState() => _AdminScreenState();
 }
 
-class _DriverHomeScreenState extends State<DriverHomeScreen> {
+class _AdminScreenState extends State<AdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        backgroundColor: Colors.amber[900],
-        title: Text('Truck Driver',
+        backgroundColor: Colors.amber[700],
+        title: Text('Admin',
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Source Sans Pro',
@@ -36,26 +36,8 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Center(
-                      child: Stack(
-                        children: [
-                          Container(
-                            width: 130,
-                            height: 130,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage("images/d2.png"))),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
                     Text(
-                      "Welcome!",
+                      "Welcome Admin!",
                       style: TextStyle(
                           fontFamily: 'Source Sans Pro',
                           fontSize: 30,
@@ -67,14 +49,14 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return AssignedTripScreen();
-                            },
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return AssignedTripScreen();
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -93,21 +75,21 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                         ),
                         child: Center(
                             child: Text(
-                          "Assigned trips",
+                          "Truck Owner",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         )),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return AssignedTripScreen();
-                            },
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return AssignedTripScreen();
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -126,7 +108,40 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                         ),
                         child: Center(
                             child: Text(
-                          "Delivery Point",
+                          "Sender",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        )),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return AssignedTripScreen();
+                        //     },
+                        //   ),
+                        // );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Colors.amber[900], Colors.green],
+                            ),
+                            borderRadius: BorderRadius.circular(50)),
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 20,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 20,
+                        ),
+                        child: Center(
+                            child: Text(
+                          "Driver",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         )),
                       ),

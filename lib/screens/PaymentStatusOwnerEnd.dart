@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:truck_sharing_app/screens/driverDrawer.dart';
 import 'package:truck_sharing_app/screens/start/paymentSuccess.dart';
 import 'package:truck_sharing_app/screens/senderDrawer.dart';
 import 'package:sslcommerz_flutter/model/SSLCAdditionalInitializer.dart';
@@ -14,12 +15,12 @@ import 'package:sslcommerz_flutter/model/sslproductinitilizer/General.dart';
 import 'package:sslcommerz_flutter/model/sslproductinitilizer/SSLCProductInitializer.dart';
 import 'package:sslcommerz_flutter/sslcommerz.dart';
 
-class RequestStatusScreen extends StatefulWidget {
+class PaymentStatusScreen extends StatefulWidget {
   @override
-  _RequestStatusScreenState createState() => _RequestStatusScreenState();
+  _PaymentStatusScreenState createState() => _PaymentStatusScreenState();
 }
 
-class _RequestStatusScreenState extends State<RequestStatusScreen> {
+class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +28,7 @@ class _RequestStatusScreenState extends State<RequestStatusScreen> {
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
-        title: Text('Request Status',
+        title: Text('Payment Status',
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Source Sans Pro',
@@ -35,175 +36,111 @@ class _RequestStatusScreenState extends State<RequestStatusScreen> {
             )),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      drawer: SenderDrawer(),
+      drawer: DriverDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: [
             SizedBox(
               height: 25,
             ),
-            Column(
-              children: <Widget>[
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                          margin: const EdgeInsets.only(left: 50.0),
-                          child: Text(
-                            'Request Status:',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                          )),
-                    ),
-                    Expanded(
-                      child: Text('Approved',
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 20,
-                            fontFamily: 'Source Sans Pro',
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+
+            // Card(
+            //   margin: const EdgeInsets.all(16.0),
+            //   //clipBehavior: Clip.antiAlias,
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(16.0),
+            //     child: Column(
+            //       children: [
+            //         ListTile(
+            //           leading: Icon(Icons.arrow_drop_down_circle),
+            //           title: const Text(
+            //             'Space Request 1',
+            //             style: TextStyle(
+            //                 fontWeight: FontWeight.bold, fontSize: 20),
+            //           ),
+            //         ),
+            //         Text(
+            //           'Pickup Date:10/08/21',
+            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //         ),
+            //         Text(
+            //           'Pickup Point: Bashundhara R/A',
+            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //         ),
+            //         Text(
+            //           'Delivery Point: Mirpur 10',
+            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //         ),
+            //         Text(
+            //           'Delivery Time: 1.00 pm',
+            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //         ),
+            //         Text(
+            //           'Product Weight: 10 kg',
+            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //         ),
+            //         Text(
+            //           'Product Volume: Mirpur 10',
+            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //         ),
+            //         Text(
+            //           'Product type: Fragile',
+            //           style: TextStyle(color: Colors.black.withOpacity(0.6)),
+            //         ),
+            //         // ButtonBar(
+            //         //   alignment: MainAxisAlignment.start,
+            //         //   children: [
+            //         //     FlatButton(
+            //         //       textColor: const Color(0xFF6200EE),
+            //         //       onPressed: () {
+            //         //         // Perform some action
+            //         //       },
+            //         //       child: const Text('ACTION 1'),
+            //         //     ),
+            //         //     FlatButton(
+            //         //       textColor: const Color(0xFF6200EE),
+            //         //       onPressed: () {
+            //         //         // Perform some action
+            //         //       },
+            //         //       child: const Text('ACTION 2'),
+            //         //     ),
+            //         //   ],
+            //         // ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 25,
             ),
-            Container(
-              margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-              padding: EdgeInsets.fromLTRB(30, 30, 0, 30),
-              //height: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.green[900]),
-                color: (Colors.amber.withOpacity(0.3)),
-              ),
-              child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(columns: <DataColumn>[
-                        DataColumn(
-                          label: Text(
-                            'Expected Delivery Date',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text('10/08/2021'),
-                        ),
-                      ], rows: <DataRow>[
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Expected time',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('1 PM')),
-                          ],
-                        ),
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Receiver Name',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('Mr X')),
-                          ],
-                        ),
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Receiver Phone No',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('0175908908')),
-                          ],
-                        ),
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Pickup Point',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('Lusaka')),
-                          ],
-                        ),
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Delivery Point',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('Kitwe')),
-                          ],
-                        ),
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Product Weight',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('10 kg')),
-                          ],
-                        ),
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Product Volume',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('700 m^3')),
-                          ],
-                        ),
-                        DataRow(
-                          cells: <DataCell>[
-                            DataCell(Text(
-                              'Product Type',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
-                            DataCell(Text('Fragile')),
-                          ],
-                        ),
-                      ])),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
+
             Container(
                 margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
                 padding: EdgeInsets.fromLTRB(10, 30, 0, 10),
                 //height: double.infinity,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.amber[900]),
+                  border: Border.all(color: Colors.black),
                   color: (Colors.greenAccent.withOpacity(0.3)),
                 ),
                 child: Column(
                   children: [
-                    Text(
-                      'Make Payment to confirm your Request',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.green[900],
-                        letterSpacing: 0,
-
-                        // backgroundColor: Colors.indigoAccent
-                      ),
-                    ),
+                    // Text(
+                    //   'Make Payment to confirm your Request',
+                    //   textAlign: TextAlign.center,
+                    //   style: TextStyle(
+                    //     fontSize: 20,
+                    //     // fontWeight: FontWeight.bold,
+                    //     color: Colors.blue[900],
+                    //     letterSpacing: 0,
+                    //
+                    //     // backgroundColor: Colors.indigoAccent
+                    //   ),
+                    // ),
 
                     SizedBox(
                       height: 25,
                     ),
+
                     Row(
                       children: [
                         Text(
@@ -243,6 +180,21 @@ class _RequestStatusScreenState extends State<RequestStatusScreen> {
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
+                            letterSpacing: 0,
+
+                            // backgroundColor: Colors.indigoAccent
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Paid',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green,
                             letterSpacing: 0,
 
                             // backgroundColor: Colors.indigoAccent
@@ -389,33 +341,28 @@ class _RequestStatusScreenState extends State<RequestStatusScreen> {
                       //margin: EdgeInsets.fromLTRB(20, 550, 20, 60),
                       child: Column(
                         children: [
-                          Center(
+                          Container(
+                            margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
                             child: FlatButton(
                               padding: EdgeInsets.symmetric(
-                                  vertical: 18, horizontal: 50),
-                              color: Colors.green.withOpacity(0.9),
-                              onPressed: () async {
-                                sslCommerzCustomizedCall().then((value) async {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return PaymentSuccessScreen();
-                                      },
-                                    ),
-                                  );
-                                }).catchError((e) {
-                                  print('error caught');
-                                  print(e.message);
-                                });
-                              },
-                              child: Text(
-                                "Make Payment",
-                                style: TextStyle(
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 16,
+                                  vertical: 12, horizontal: 70),
+                              color: Colors.amber[700],
+                              onPressed: () {},
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.call,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    "Call Sender",
+                                    style: TextStyle(
+                                        fontFamily: 'Source Sans Pro',
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -428,42 +375,5 @@ class _RequestStatusScreenState extends State<RequestStatusScreen> {
         ),
       ),
     );
-  }
-}
-
-Future<void> sslCommerzCustomizedCall() async {
-  Sslcommerz sslcommerz = Sslcommerz(
-      initializer: SSLCommerzInitialization(
-          ipn_url: "www.ipnurl.com",
-          currency: SSLCurrencyType.BDT,
-          product_category: "Food",
-          sdkType: SSLCSdkType.TESTBOX,
-          store_id: 'mstec602216c516812',
-          store_passwd: 'mstec602216c516812@ssl',
-          total_amount: 100,
-          tran_id: "1231321321321312"));
-
-  sslcommerz
-      .addCustomerInfoInitializer(
-          customerInfoInitializer: SSLCCustomerInfoInitializer(
-              customerName: null,
-              customerEmail: null,
-              customerAddress1: null,
-              customerCity: null,
-              customerPostCode: null,
-              customerCountry: null,
-              customerPhone: ''))
-      .addProductInitializer(
-          sslcProductInitializer: SSLCProductInitializer(
-              productName: "Parking Booking",
-              productCategory: "Parking",
-              general: General(
-                  general: "General Purpose",
-                  productProfile: "Product Profile")));
-  var result = await sslcommerz.payNow();
-  if (result is PlatformException) {
-    print("the response is: " + result.message + " code: " + result.code);
-  } else {
-    SSLCTransactionInfoModel model = result;
   }
 }

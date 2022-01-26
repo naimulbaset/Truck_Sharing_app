@@ -4,6 +4,7 @@ import 'package:truck_sharing_app/screens/driverDrawer.dart';
 import 'package:truck_sharing_app/screens/truckReg.dart';
 import 'package:truck_sharing_app/screens/DriverScreen/AssignedTrips.dart';
 import 'package:truck_sharing_app/screens/truckDriverAtDeliverypoint.dart';
+import 'package:truck_sharing_app/screens/Admin/priceSetUp.dart';
 
 class AdminScreen extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _AdminScreenState extends State<AdminScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: true,
+      // resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
         title: Text('Admin',
@@ -142,6 +143,39 @@ class _AdminScreenState extends State<AdminScreen> {
                         child: Center(
                             child: Text(
                           "Driver",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        )),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return PriceSetupScreen();
+                            },
+                          ),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Colors.amber[900], Colors.green],
+                            ),
+                            borderRadius: BorderRadius.circular(50)),
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 20,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 20,
+                        ),
+                        child: Center(
+                            child: Text(
+                          "Price Setup",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         )),
                       ),

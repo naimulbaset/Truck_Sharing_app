@@ -5,6 +5,7 @@ import 'package:truck_sharing_app/screens/truckReg.dart';
 import 'package:truck_sharing_app/screens/requestStatus.dart';
 import 'package:truck_sharing_app/screens/driverDrawer.dart';
 import 'package:truck_sharing_app/screens/PaymentStatusOwnerEnd.dart';
+import 'package:truck_sharing_app/screens/widget/reassign.dart';
 
 class OwnerThankScreen extends StatefulWidget {
   @override
@@ -83,7 +84,33 @@ class _OwnerThankScreenState extends State<OwnerThankScreen> {
                         // );
                       },
                       child: Text(
-                        "Cancel",
+                        "Cancel Trip",
+                        style: TextStyle(
+                            fontFamily: 'Source Sans Pro',
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    FlatButton(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+                      color: Colors.amber[700],
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return ReAssignScreen();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Re-assign Driver",
                         style: TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 15,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:truck_sharing_app/screens/productSender.dart';
 import 'package:truck_sharing_app/screens/driverDrawer.dart';
 import 'package:truck_sharing_app/screens/successfullyAdded.dart';
+import 'package:multiselect_formfield/multiselect_formfield.dart';
 
 class TruckRegScreen extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class TruckRegScreen extends StatefulWidget {
 }
 
 class _TruckRegScreenState extends State<TruckRegScreen> {
+  List _myActivities;
+  String _myActivitiesResult;
   TimeOfDay selectedTime = TimeOfDay.now();
   DateTime selectedDate = DateTime.now();
   final _formkey = new GlobalKey<FormState>();
@@ -20,46 +23,23 @@ class _TruckRegScreenState extends State<TruckRegScreen> {
   String phone;
   String purpose;
   String fee;
+  @override
+  void initState() {
+    super.initState();
+    _myActivities = [];
+    _myActivitiesResult = '';
+  }
 
   // @override
   // void initState() {
   //   super.initState();
   //   time = TimeOfDay.now();
   // }
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
-  }
-
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay picked_s = await showTimePicker(
-        context: context,
-        initialTime: selectedTime,
-        builder: (BuildContext context, Widget child) {
-          return MediaQuery(
-            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
-            child: child,
-          );
-        });
-
-    if (picked_s != null && picked_s != selectedTime)
-      setState(() {
-        selectedTime = picked_s;
-      });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
         title: Text('Add your Truck',
@@ -202,9 +182,49 @@ class _TruckRegScreenState extends State<TruckRegScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 12,
-                ),
+
+                // SizedBox(
+                //   height: 12,
+                // ),
+                // Container(
+                //   child: Container(
+                //     //padding: EdgeInsets.all(8),
+                //     color: Colors.white,
+                //     //margin: EdgeInsets.fromLTRB(20, 130, 20, 50),
+                //     child: Column(
+                //         mainAxisAlignment: MainAxisAlignment.start,
+                //         children: <Widget>[
+                //           Container(
+                //             padding: EdgeInsets.all(16),
+                //             child: DropdownButtonFormField(
+                //               isExpanded: true,
+                //               hint: Text('Product type'),
+                //               onChanged: (val) {
+                //                 print(val);
+                //                 setState(() {
+                //                   this.purpose = val;
+                //                 });
+                //               },
+                //               value: this.purpose,
+                //               items: [
+                //                 DropdownMenuItem(
+                //                   child: Text('Fragile'),
+                //                   value: 'Consultancy',
+                //                 ),
+                //                 DropdownMenuItem(
+                //                   child: Text('Frozen'),
+                //                   value: 'Follow up',
+                //                 ),
+                //                 DropdownMenuItem(
+                //                   child: Text('Other'),
+                //                   value: 'Report',
+                //                 )
+                //               ],
+                //             ),
+                //           ),
+                //         ]),
+                //   ),
+                // ),
                 SizedBox(
                   height: 12,
                 ),
@@ -217,33 +237,50 @@ class _TruckRegScreenState extends State<TruckRegScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            padding: EdgeInsets.all(16),
-                            child: DropdownButtonFormField(
-                              isExpanded: true,
-                              hint: Text('Product type'),
-                              onChanged: (val) {
-                                print(val);
-                                setState(() {
-                                  this.purpose = val;
-                                });
-                              },
-                              value: this.purpose,
-                              items: [
-                                DropdownMenuItem(
-                                  child: Text('Fragile'),
-                                  value: 'Consultancy',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('Frozen'),
-                                  value: 'Follow up',
-                                ),
-                                DropdownMenuItem(
-                                  child: Text('Other'),
-                                  value: 'Report',
-                                )
-                              ],
-                            ),
-                          ),
+                              padding: EdgeInsets.all(16),
+                              child: MultiSelectFormField(
+                                  autovalidate: false,
+                                  chipBackGroundColor: Colors.green,
+                                  chipLabelStyle:
+                                      TextStyle(fontWeight: FontWeight.bold),
+                                  dialogTextStyle:
+                                      TextStyle(fontWeight: FontWeight.bold),
+                                  checkBoxActiveColor: Colors.black,
+                                  checkBoxCheckColor: Colors.green,
+                                  dialogShapeBorder: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12.0)),
+                                  ),
+                                  title: Text(
+                                    "Product Type",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  dataSource: [
+                                    {
+                                      "display": "Frozen",
+                                      "value": "Running",
+                                    },
+                                    {
+                                      "display": "Fragile",
+                                      "value": "Climbing",
+                                    },
+                                    {
+                                      "display": "Others",
+                                      "value": "Walking",
+                                    },
+                                  ],
+                                  textField: 'display',
+                                  valueField: 'value',
+                                  okButtonLabel: 'OK',
+                                  cancelButtonLabel: 'CANCEL',
+                                  hintWidget: Text('Please choose one or more'),
+                                  initialValue: _myActivities,
+                                  onSaved: (value) {
+                                    if (value == null) return;
+                                    setState(() {
+                                      _myActivities = value;
+                                    });
+                                  })),
                         ]),
                   ),
                 ),

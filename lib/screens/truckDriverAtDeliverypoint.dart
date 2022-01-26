@@ -11,7 +11,6 @@ class _TDatDeliveyScreenState extends State<TDatDeliveyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
         title: Text('Driver at Delivery Point',

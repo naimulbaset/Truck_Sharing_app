@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:truck_sharing_app/screens/driverDrawer.dart';
 import 'package:truck_sharing_app/screens/ThankOwner.dart';
 
-class RequestScreen extends StatefulWidget {
+class ReAssignScreen extends StatefulWidget {
   @override
-  _RequestScreenState createState() => _RequestScreenState();
+  _ReAssignScreenState createState() => _ReAssignScreenState();
 }
 
-class _RequestScreenState extends State<RequestScreen> {
+class _ReAssignScreenState extends State<ReAssignScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +15,7 @@ class _RequestScreenState extends State<RequestScreen> {
       // resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
-        title: Text('Request',
+        title: Text('Re-assign Driver',
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Source Sans Pro',
@@ -33,12 +33,12 @@ class _RequestScreenState extends State<RequestScreen> {
             Column(
               children: <Widget>[
                 Text(
-                  'Space request 1',
+                  'Your previous assigned driver is canceled!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: Colors.green[900],
+                    color: Colors.red[900],
                     letterSpacing: 0,
                     // backgroundColor: Colors.indigoAccent
                   ),
@@ -144,7 +144,7 @@ class _RequestScreenState extends State<RequestScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'Assign a Driver',
+                        'Assign a new driver',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,

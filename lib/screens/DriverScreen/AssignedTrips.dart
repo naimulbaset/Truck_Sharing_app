@@ -11,7 +11,7 @@ class _AssignedTripScreenState extends State<AssignedTripScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: true,
+      // resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
         title: Text('Assigned trips',

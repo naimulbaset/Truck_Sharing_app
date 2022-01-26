@@ -10,7 +10,6 @@ class _TruckDetailsScreenState extends State<TruckDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
         title: Text('Truck Id Details',

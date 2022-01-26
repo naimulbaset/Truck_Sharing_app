@@ -4,6 +4,7 @@ import 'package:truck_sharing_app/screens/myTrucks.dart';
 import 'package:truck_sharing_app/screens/truckReg.dart';
 import 'package:truck_sharing_app/screens/senderAtpickup.dart';
 import 'package:truck_sharing_app/screens/senderDrawer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TripDetailScreen extends StatefulWidget {
   @override
@@ -14,6 +15,14 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<void> _makePhoneCall(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -188,7 +197,11 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                               padding: EdgeInsets.symmetric(
                                   vertical: 12, horizontal: 70),
                               color: Colors.green.withOpacity(0.9),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  _makePhoneCall('tel:0597924917');
+                                });
+                              },
                               child: Row(
                                 children: [
                                   Icon(

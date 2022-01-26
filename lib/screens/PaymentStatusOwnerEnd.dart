@@ -14,6 +14,7 @@ import 'package:sslcommerz_flutter/model/SSLCurrencyType.dart';
 import 'package:sslcommerz_flutter/model/sslproductinitilizer/General.dart';
 import 'package:sslcommerz_flutter/model/sslproductinitilizer/SSLCProductInitializer.dart';
 import 'package:sslcommerz_flutter/sslcommerz.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PaymentStatusScreen extends StatefulWidget {
   @override
@@ -21,11 +22,19 @@ class PaymentStatusScreen extends StatefulWidget {
 }
 
 class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
+  Future<void> _makePhoneCall(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: true,
+      // resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         backgroundColor: Colors.amber[700],
         title: Text('Payment Status',
@@ -347,7 +356,11 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                               padding: EdgeInsets.symmetric(
                                   vertical: 12, horizontal: 70),
                               color: Colors.amber[700],
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  _makePhoneCall('tel:0597924917');
+                                });
+                              },
                               child: Row(
                                 children: [
                                   Icon(

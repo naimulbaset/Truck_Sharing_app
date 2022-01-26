@@ -37,7 +37,8 @@ class _PendingScreenState extends State<PendingScreen> {
                     Expanded(
                       child: Container(
                         margin: EdgeInsets.fromLTRB(20, 60, 20, 0),
-                        padding: EdgeInsets.fromLTRB(80, 150, 0, 30),
+                        padding: EdgeInsets.fromLTRB(0, 150, 0, 30),
+                        alignment: Alignment.center,
                         //height: double.infinity,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.amber[900]),
@@ -51,13 +52,27 @@ class _PendingScreenState extends State<PendingScreen> {
                         child: Column(
                           children: [
                             Text(
+                              'Trip Id: 23456',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green[900],
+                                letterSpacing: 0,
+                                // backgroundColor: Colors.indigoAccent
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
                               'Your request is pending!\n'
                               'Please wait a moment!',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'Source Sans Pro',
                                 fontWeight: FontWeight.bold,
-                                fontSize: 25.0,
+                                fontSize: 22.0,
                               ),
                             ),
                           ],
